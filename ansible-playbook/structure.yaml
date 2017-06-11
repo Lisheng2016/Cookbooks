@@ -1,0 +1,42 @@
+--- # This is a yaml file for installing httpd on centos 7 server
+#- hosts: localhost 
+#  remote_user: ansible
+#  become: yes
+#  become_method: sudo
+#  connection: ssh
+#  gather_facts: yes
+#  vars:
+#    username: myuser
+#  tasks:
+#  - name: Install HTTPD server on centos7 server
+#    yum:
+#      name: httpd
+#      state: latest
+#    notify: 
+#    -  startservice
+#  handlers:
+#  - name: startservice
+#    service: 
+#      name: httpd
+#      state: restarted
+- hosts: localhost 
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  connection: ssh
+  gather_facts: yes
+  vars:
+    user: myuser
+  tasks:
+    - name: Installing httpd on centos7 server
+      yum:
+        name: httpd
+        state: latest 
+      notify:
+      - startservice
+  handlers:
+  - name: startservice
+    service:
+      name: httpd
+      state: restarted
+

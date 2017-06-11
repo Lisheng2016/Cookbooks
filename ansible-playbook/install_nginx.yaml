@@ -1,0 +1,22 @@
+--- # This is a yaml file for installing nginx
+- hosts: centos
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+  connection: ssh
+  tasks:
+  - name: Installing nginx software
+    yum:
+      name: nginx
+      state: present
+    register: result
+    notify:
+    - enable and start nginx
+  - debug: var=result
+  handlers:
+  - name: enable and start nginx
+    service:
+      name: nginx    
+      enabled: yes
+      state: restarted

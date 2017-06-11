@@ -1,0 +1,14 @@
+--- # This is a yaml file for installing telnet on centos7 server
+- hosts: centos
+  remote_user: ansible
+  become: yes
+  become_method: sudo
+  connection: ssh
+  gather_facts: yes
+  vars:
+    pkgname: telnet
+  tasks:
+  - name: Installing telnet
+    yum:
+      name: "{{ pkgname }}"
+      state: latest
