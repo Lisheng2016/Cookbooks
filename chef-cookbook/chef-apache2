@@ -1,0 +1,6 @@
+execute "sudo apt-egt update"
+package "apache2"
+execute "rm -rf /var/www && mkdir /vagrant/www"
+link "/var/www" do 
+	to "/vagrant/www"
+end
