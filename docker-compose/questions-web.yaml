@@ -1,0 +1,13 @@
+version: "3.5"
+services:
+  web:
+    image: "nginx:alpine"
+    ports:
+      - 3000:80
+    networks: 
+      - front-tier
+    deploy:
+      replicas: 4
+networks:
+  front-tier:
+    driver: overlay
